@@ -1,5 +1,7 @@
-class PetsController < ApplicationController
-  before_action :set_pet, only: [:show, :update, :destroy]
+# frozen_string_literal: true
+
+class PetsController < OpenReadController
+  before_action :set_pet, only: %i[update destroy]
 
   # GET /pets
   def index
@@ -15,7 +17,7 @@ class PetsController < ApplicationController
 
   # POST /pets
   def create
-    @pet = Pet.new(pet_params)
+    @pet = current_user.pets.build(pet_params)
 
     if @pet.save
       render json: @pet, status: :created, location: @pet
@@ -36,16 +38,19 @@ class PetsController < ApplicationController
   # DELETE /pets/1
   def destroy
     @pet.destroy
+
+    head :no_content
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_pet
-      @pet = Pet.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def pet_params
-      params.require(:pet).permit(:species, :breed, :name, :dob, :favorite_toy)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_pet
+    @pet = current_user.pets.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def pet_params
+    params.require(:pet).permit(:species, :breed, :name, :dob, :favorite_toy, :user_id)
+  end
 end
