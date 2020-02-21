@@ -1,4 +1,4 @@
-<% project_name = 'savvy-paws' %>
+<% project_name = 'savvy_paws' %>
 
 default: &default
   adapter: postgresql
