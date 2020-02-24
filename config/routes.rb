@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/pets/:id' => 'pets#show'
   delete '/pets/:id' => 'pets#destroy'
   patch '/pets/:id' => 'pets#update'
+  get '/pets' => 'pets#index'
   # Custom routes
   post '/sign-up' => 'users#signup'
   post '/sign-in' => 'users#signin'
