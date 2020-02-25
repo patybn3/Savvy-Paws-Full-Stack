@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class PetsController < OpenReadController
-  before_action :set_pet, only: %i[create update destroy]
+  before_action :set_pet, only: %i[update destroy]
 
   # GET /pets
   def index
