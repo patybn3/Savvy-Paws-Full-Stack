@@ -12,6 +12,7 @@ class PetsController < OpenReadController
 
   # GET /pets/1
   def show
+    @pet = current_user.pets.all
     render json: @pet
   end
 
