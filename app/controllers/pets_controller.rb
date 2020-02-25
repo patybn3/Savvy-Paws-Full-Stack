@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class PetsController < OpenReadController
-  before_action :set_pet, only: %i[show update destroy]
+  before_action :set_pet, only: %i[update destroy]
 
   # GET /pets
   def index
@@ -13,7 +13,7 @@ class PetsController < OpenReadController
   # GET /pets/1
   def show
     @pets = current_user.pets.all
-    render json: @pet
+    render json: @pets
   end
 
   # POST /pets
