@@ -5,7 +5,7 @@ class PetsController < OpenReadController
 
   # GET /pets
   def index
-    @pets = current_user.pets.all
+    @pets = Pets.all
 
     render json: @pets
   end
