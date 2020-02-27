@@ -47,7 +47,7 @@ The Back-End of this project is written in the following languages:
 
 ## Planning and Development Process:
 
-User stories were created to propose the features of this game that would be used by an user who is to sing up and sign in to play the game:
+User stories
 
 1. As an user I would like to sign in
 2. As an user I would like to sign out
