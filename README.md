@@ -3,6 +3,7 @@
 This is a Full Stack project in which this is the back-end repository
 Check the front-end repository at: https://github.com/patybn3/Savvy-Paws-Client
 review the web application at: https://patybn3.github.io/Savvy-Paws-Client/
+Heroku: https://tranquil-earth-29477.herokuapp.com/
 
 ## Objective:
 
