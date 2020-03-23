@@ -5,8 +5,12 @@ class PetsController < OpenReadController
 
   # GET /pets
   def index
-    @pets = current_user.pets
-
+    @pets = if params[:user_pets]
+              current_user.pets
+            else
+              Pet.all
+            end
+    p @pets
     render json: @pets
   end
 
