@@ -5,8 +5,8 @@ class PetsController < OpenReadController
 
   # GET /pets
   def index
-    @pets = if params[:user_pets]
-              current_user.pets
+    @pets = if current_user
+              p current_user.pets
             else
               Pet.all
             end
