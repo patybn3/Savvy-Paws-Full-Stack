@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_21_191719) do
+ActiveRecord::Schema.define(version: 2020_03_24_224424) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,15 +23,22 @@ ActiveRecord::Schema.define(version: 2020_02_21_191719) do
     t.index ["user_id"], name: "index_examples_on_user_id"
   end
 
+  create_table "likes", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "pets", force: :cascade do |t|
     t.string "species", null: false
     t.string "breed", null: false
     t.string "name", null: false
     t.date "dob"
-    t.string "favorite_toy"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.text "site"
+    t.bigint "like_id"
+    t.index ["like_id"], name: "index_pets_on_like_id"
     t.index ["user_id"], name: "index_pets_on_user_id"
   end
 
@@ -39,14 +46,17 @@ ActiveRecord::Schema.define(version: 2020_02_21_191719) do
     t.string "email", null: false
     t.string "token", null: false
     t.string "password_digest", null: false
-    t.string "first_name", null: false
     t.string "last_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "like_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["like_id"], name: "index_users_on_like_id"
     t.index ["token"], name: "index_users_on_token", unique: true
   end
 
   add_foreign_key "examples", "users"
+  add_foreign_key "pets", "likes"
   add_foreign_key "pets", "users"
+  add_foreign_key "users", "likes"
 end
