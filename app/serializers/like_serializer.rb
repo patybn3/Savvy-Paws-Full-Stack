@@ -1,9 +1,8 @@
 class LikeSerializer < ActiveModel::Serializer
-  attributes :id, :owner
+  attributes :id, :editable
   has_one :pet
-  has_one :user
 
-  def owner
-    object.user.last_name
+  def editable
+    scope == object.pet
   end
 end

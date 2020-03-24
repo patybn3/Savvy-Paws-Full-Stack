@@ -15,7 +15,7 @@ class LikesController < ApplicationController
 
   # POST /likes
   def create
-    @like = current_user.likes.build(like_params)
+    @like = current_pet.likes.build(like_params)
 
     if @like.save
       render json: @like, status: :created, location: @like
@@ -44,11 +44,11 @@ class LikesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_like
-    @like = current_user.likes.find(params[:id])
+    @like = current_pet.likes.find(params[:id])
   end
 
   # Only allow a trusted parameter "white list" through.
   def like_params
-    params.require(:like).permit(:pet_id, :user_id)
+    params.require(:like).permit(:pet_id)
   end
 end

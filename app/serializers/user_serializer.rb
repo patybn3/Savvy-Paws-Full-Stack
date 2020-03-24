@@ -3,5 +3,4 @@
 class UserSerializer < ActiveModel::Serializer
   attributes :id, :email, :last_name
   has_many :pets
-  has_many :likes
 end
