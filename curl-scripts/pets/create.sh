@@ -10,8 +10,8 @@ curl "http://localhost:4741/pets" \
       "name": "'"${NAME}"'",
       "species": "'"${SPECIES}"'",
       "breed": "'"${BREED}"'",
-      "favorite_toy": "'"${FAV}"'",
-      "dob": "'"${DATE}"'"
+      "dob": "'"${DATE}"'",
+      "site": "'"${SITE}"'"
     }
   }'
 
