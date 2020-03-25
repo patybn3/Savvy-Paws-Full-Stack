@@ -30,6 +30,20 @@ class PetsController < OpenReadController
     end
   end
 
+  def add_like
+    @pet = Pet.fin(params[:pet_id])
+
+    if @pet
+      @pet.likes[0].like_count += 1
+
+      if @pet.like[0].save
+        respond_to do |format|
+          format.json { render :show, status: :ok }
+        end
+      end
+    end
+  end
+
   # PATCH/PUT /pets/1
   def update
     if @pet.update(pet_params)
